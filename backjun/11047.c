@@ -19,9 +19,7 @@ int	main(void)
 	for (i; i >= 0; i--)
 	{
 		sum += target / arr[i];
-		printf("sum : %d", target / arr[i]);
 		target -= target / arr[i] * arr[i];
-		printf(" target : %d\n", target);
 		if (target == 0)
 			break;
 	}

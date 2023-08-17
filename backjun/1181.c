@@ -2,49 +2,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+typedef struct {
+	int len;
+	char word[51];
+} word;
+
+int compare(const void* a, const void* b) {
+	word word1 = *(word*)a;
+	word word2 = *(word*)b;
+
+	if (word1.len != word2.len)
+		return (word1.len - word2.len);
+	else
+		return (strcmp(word1.word, word2.word));
+}
+
 int	main(void)
 {
 	int	n;
-	char** arr;
-	char tmp[51];
-	char* temp = 0;
+	word* arr;
 
 	scanf("%d", &n);
-	arr = (char**)malloc(sizeof(char*) * (n + 1));
+	arr = (word*)malloc(sizeof(word) * (n));
 	for (int i = 0; i < n; i++)
 	{
-		scanf("%s", tmp);
-		arr[i] = (char*)malloc(sizeof(char) * strlen(tmp) + 1);
-		strcpy(arr[i], tmp);
+		scanf("%s", arr[i].word);
+		arr[i].len = strlen(arr[i].word);
 	}
-	for (int i = 0; i < n - 1; i++)
-	{
-		for (int j = 0; j + 1 + i < n; j++)
-		{
-			if (strlen(arr[j]) > strlen(arr[j + 1]))
-			{
-				temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
-			}
-			else if (strcmp(arr[j], arr[j + 1]) > 0 && strlen(arr[j]) == strlen(arr[j + 1]))
-			{
-				temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
-			}
-		}
-	}
+	qsort(arr, n, sizeof(word), compare);
 	for (int i = 0; i < n; i++)
 	{
 		if (i == 0)
 		{
-			printf("%s\n", arr[i]);
+			printf("%s\n", arr[i].word);
 		}
 		else
 		{
-			if (strcmp(arr[i - 1], arr[i]) != 0)
-				printf("%s\n", arr[i]);
+			if (compare(&arr[i], &arr[i - 1]) != 0)
+				printf("%s\n", arr[i].word);
 		}
 	}
 }

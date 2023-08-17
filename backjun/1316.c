@@ -2,16 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 
-int	check(int* alpha)
-{
-	for (int k = 0; k < 27; k++)
-	{
-		if (alpha[k] == 1)
-			return (0);
-	}
-	return (1);
-}
-
 int	main(void)
 {
 	int		n;

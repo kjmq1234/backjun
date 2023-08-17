@@ -5,21 +5,19 @@
 int	main(void)
 {
 	int	n;
-	long long* length;
-	long long* price;
+	int* length;
+	int* price;
 	long long	sum = 0;
 	long long	min = 1000000001;
 
 	scanf("%d", &n);
-	length = (long long*)malloc(sizeof(long long) * n - 1);
-	price = (long long*)malloc(sizeof(long long) * n);
+	length = (int*)malloc(sizeof(int) * n - 1);
+	price = (int*)malloc(sizeof(int) * n);
 
 	for (int i = 0; i < n - 1; i++)
 		scanf("%d", &length[i]);
 	for (int i = 0; i < n; i++)
 		scanf("%d", &price[i]);
-	//sum = length[0] * price[0];
-	//min = price[0];
 	for (int i = 0; i < n - 1; i++)
 	{
 		if (price[i] < min)

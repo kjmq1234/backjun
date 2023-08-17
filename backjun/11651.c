@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct 
+typedef struct
 {
 	int	x;
 	int	y;
@@ -13,10 +13,10 @@ int	compare(const void* a, const void* b)
 	dot one = *(dot*)a;
 	dot two = *(dot*)b;
 
-	if (one.x == two.x)
-		return (one.y - two.y);
-	else
+	if (one.y == two.y)
 		return (one.x - two.x);
+	else
+		return (one.y - two.y);
 }
 
 int	main(void)

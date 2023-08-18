@@ -171,6 +171,24 @@
     <ClCompile Include="11651.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="18870.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="15792.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="15596.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="2798.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1436.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="2231.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="15649.c">

@@ -2,16 +2,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	check(int *arr, int	n)
+int	binarysearch(int *arr, int size, int key)
 {
-	int	i = 0;
-	while (arr[i] != '\0')
+	int	low = 0;
+	int top = size - 1;
+	int mid;
+
+	while (low <= top)
 	{
-		if (arr[i] == n)
-			return (1);
-		i++;
+		mid = (low + top) / 2;
+		if (key > arr[mid])
+			low = mid + 1;
+		else if (key < arr[mid])
+			top = mid - 1;
+		else
+			return (mid);
 	}
-	return (0);
+	return (-1);
+}
+
+int	compare(const void* a, const void* b)
+{
+	int	num1 = *(int*)a;
+	int	num2 = *(int*)b;
+
+	return (num1 - num2);
 }
 
 int	main(void)
@@ -28,11 +43,12 @@ int	main(void)
 		scanf("%d", &temp);
 		arr[i] = temp;
 	}
+	qsort(arr, n, sizeof(int), compare);
 	scanf("%d", &k);
 	for (int i = 0; i < k; i++)
 	{
 		scanf("%d", &temp);
-		if (check(arr, temp))
+		if (binarysearch(arr, n, temp) != -1)
 			printf("%d ", 1);
 		else
 			printf("%d ", 0);

@@ -75,7 +75,7 @@ int	main(void)
 	{
 		scanf("%s", temp);
 		if (temp[0] >= '0' && temp[0] <= '9')
-			printf("%s\n", dict[atoi(temp) - 1].name);
+			printf("%s\n", dict[ft_atoi(temp) - 1].name);
 		else
 			printf("%d\n", dict_sort[binarysearch(dict_sort, n, temp)].index);
 	}

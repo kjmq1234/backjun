@@ -210,6 +210,36 @@
     <ClCompile Include="compare_binarysearch.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="binarysearch.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1764.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1269.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="11478.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="15654.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="28278.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="10828.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="10773.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="9012.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="4949.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="15649.c">

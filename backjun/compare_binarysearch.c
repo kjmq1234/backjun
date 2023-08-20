@@ -20,21 +20,15 @@ int	compare(const void* a, const void* b)
 		return (0);
 }
 
-int	binarysearch(int* arr, int size, int key)
+int	compare(const void* a, const void* b)
 {
-	int	low = 0;
-	int top = size - 1;
-	int mid;
+	char* one = *(char**)a;
+	char* two = *(char**)b;
 
-	while (low <= top)
-	{
-		mid = (low + top) / 2;
-		if (key > arr[mid])
-		{
-			low = mid + 1;
-		if (key < arr[mid])
-			top = mid - 1;
-
-	}
-	return (-1);
+	if (strcmp(one, two) > 0)
+		return (1);
+	else if (strcmp(one, two) < 0)
+		return (-1);
+	else
+		return (0);
 }

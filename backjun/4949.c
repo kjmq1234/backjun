@@ -40,8 +40,8 @@ int	main(void)
 				j++;
 			}
 			if (idx == 0)
-				printf("YES\n");
+				printf("yes\n");
 			else
-				printf("NO\n");
+				printf("no\n");
 		}
 }

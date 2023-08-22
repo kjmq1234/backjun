@@ -77,45 +77,18 @@ int pop(CircularQueue* q)
 int	main(void)
 {
 	int	n;
-	int	num;
-	char sig[6];
+	int	data;
 	CircularQueue queue;
 
 	scanf("%d", &n);
 	init_Queue(&queue, n);
-	for (int i = 0; i < n; i++)
+	for (int i = 1; i <= n + 1; i++)
+		push(&queue, i);
+	for (int i = 1; i < n; i++)
 	{
-		scanf("%s", sig);
-		if (!strcmp(sig, "push"))
-		{
-			scanf("%d", &num);
-			push(&queue, num);
-		}
-		else if (!strcmp(sig, "pop"))
-		{
-			printf("%d\n", pop(&queue));
-		}
-		else if (!strcmp(sig, "size"))
-		{
-			printf("%d\n", queue.count);
-		}
-		else if (!strcmp(sig, "empty"))
-		{
-			printf("%d\n", is_empty(&queue));
-		}
-		else if (!strcmp(sig, "front"))
-		{
-			if (!is_empty(&queue))
-				printf("%d\n", queue.front->data);
-			else
-				printf("-1\n");
-		}
-		else if (!strcmp(sig, "back"))
-		{
-			if (!is_empty(&queue))
-				printf("%d\n", queue.rear->data);
-			else
-				printf("-1\n");
-		}
+		printf("%d ", pop(&queue));
+		data = pop(&queue);
+		push(&queue, data);
 	}
+	printf("%d", pop(&queue));
 }

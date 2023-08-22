@@ -52,7 +52,7 @@ int push(CircularQueue* q, int data)
 	{
 		q->rear->next = newNode;
 		q->rear = newNode;
-		q->rear->next = q->front;
+		q->rear->next = NULL;
 	}
 	q->count++;
 	return (1);

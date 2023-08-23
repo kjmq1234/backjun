@@ -8,6 +8,7 @@ typedef struct
 	int	data;
 	struct Node* next;
 	struct Node* prev;
+	int idx;
 } Node;
 
 typedef struct
@@ -18,33 +19,33 @@ typedef struct
 	int		size;
 } Deque;
 
-void init_Queue(Deque* q, int size)
+void init_Queue(Deque * q, int size)
 {
 	q->rear = q->front = NULL;
 	q->count = 0;
-	q->size = size + 1;
+	q->size = size;
 }
 
-int is_full(Deque* q)
+int is_full(Deque * q)
 {
 	return (q->count == q->size);
 }
 
-int is_empty(Deque* q)
+int is_empty(Deque * q)
 {
 	return (q->count == 0);
 }
 
-int push_rear(Deque* q, int data)
+int push_rear(Deque * q, int data, int index)
 {
 	if (is_full(q))
 	{
-		printf("%d", data);
 		return (0);
 	}
 	Node* newNode;
 	newNode = (Node*)malloc(sizeof(Node));
 	newNode->data = data;
+	newNode->idx = index;
 	newNode->next = NULL;
 	newNode->prev = NULL;
 	if (is_empty(q))
@@ -63,7 +64,7 @@ int push_rear(Deque* q, int data)
 	return (1);
 }
 
-int push_front(Deque* q, int data)
+int push_front(Deque * q, int data, int index)
 {
 	if (is_full(q))
 	{
@@ -72,6 +73,7 @@ int push_front(Deque* q, int data)
 	Node* newNode;
 	newNode = (Node*)malloc(sizeof(Node));
 	newNode->data = data;
+	newNode->idx = index;
 	newNode->next = NULL;
 	newNode->prev = NULL;
 	if (is_empty(q))
@@ -90,7 +92,7 @@ int push_front(Deque* q, int data)
 	return (1);
 }
 
-int pop_front(Deque* q)
+int pop_front(Deque * q)
 {
 	Node* ptr;
 	int	return_data;
@@ -100,8 +102,8 @@ int pop_front(Deque* q)
 	}
 	else
 	{
+		return_data = q->front->data;
 		ptr = q->front;
-		return_data = ptr->data;
 		q->front = q->front->next;
 		q->count--;
 	}
@@ -109,7 +111,7 @@ int pop_front(Deque* q)
 	return return_data;
 }
 
-int pop_rear(Deque* q)
+int pop_rear(Deque * q)
 {
 	Node* ptr;
 	int	return_data;
@@ -131,29 +133,42 @@ int pop_rear(Deque* q)
 int	main(void)
 {
 	int	n;
-	int	m;
+	int	tmp_idx;
 	int	temp;
-	int* queuestack;
 	Deque dq;
 
 	scanf("%d", &n);
 	init_Queue(&dq, n);
-	queuestack = (int*)malloc(sizeof(int) * n);
-	for (int i = 0; i < n; i++)
-	{
-		scanf("%d", &queuestack[i]);
-	}
 	for (int i = 0; i < n; i++)
 	{
 		scanf("%d", &temp);
-		if (!queuestack[i])
-			push_front(&dq, temp);
+		push_front(&dq, temp, i + 1);
 	}
-	scanf("%d", &m);
-	for (int i = 0; i < m; i++)
+	printf("%d ", dq.rear->idx);
+	temp = pop_rear(&dq);
+	for (int i = 0; i < n - 1; i++)
 	{
-		scanf("%d", &temp);
-		push_rear(&dq, temp);
-		printf("%d ", pop_front(&dq));
+		if (temp > 0)
+		{
+			
+			for (int j = 0; j < temp - 1; j++)
+			{
+				tmp_idx = dq.rear->idx;
+				push_front(&dq, pop_rear(&dq), tmp_idx);
+			}
+			printf("%d ", dq.rear->idx);
+			temp = pop_rear(&dq);
+		}
+		else
+		{
+			temp *= -1;
+			for (int j = 0; j < temp - 1; j++)
+			{
+				tmp_idx = dq.front->idx;
+				push_rear(&dq, pop_front(&dq), tmp_idx);
+			}
+			printf("%d ", dq.front->idx);
+			temp = pop_front(&dq);
+		}
 	}
 }

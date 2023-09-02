@@ -11,16 +11,6 @@ int	compare(const void* a, const void* b)
 	return (0);
 }
 
-int	valid(int current, int* buf, int i)
-{
-	for (int n = 0; n < current; n++)
-	{
-		if (buf[n] == i)
-			return (0);
-	}
-	return (1);
-}
-
 void	recursive(int count, int depth, int current, int* buf, int* soo)
 {
 	if (current == depth)
@@ -35,11 +25,8 @@ void	recursive(int count, int depth, int current, int* buf, int* soo)
 	{
 		for (int i = 0; i < count; i++)
 		{
-			if (valid(current, buf, soo[i]))
-			{
 				buf[current] = soo[i];
 				recursive(count, depth, current + 1, buf, soo);
-			}
 		}
 	}
 }

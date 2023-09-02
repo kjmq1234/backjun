@@ -72,3 +72,42 @@ int	pop(Stack* s)
 		return (return_data);
 	}
 }
+
+int	main(void)
+{
+	int	n;
+	int	num;
+	char sig[6];
+	Stack stack;
+	
+	scanf("%d", &n);
+	init_stack(&stack, n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%s", &sig);
+		if (strcmp(sig, "push") == 0)
+		{
+			scanf("%d", &num);
+			push(&stack, num);
+		}
+		else if (strcmp(sig, "pop") == 0)
+		{
+			printf("%d\n", pop(&stack));
+		}
+		else if (strcmp(sig, "size") == 0)
+		{
+			printf("%d\n", stack.count);
+		}
+		else if (strcmp(sig, "empty") == 0)
+		{
+				printf("%d\n", is_empty(&stack));
+		}
+		else if (strcmp(sig, "top") == 0)
+		{
+			if (is_empty(&stack))
+				printf("%d\n", -1);
+			else
+				printf("%d\n", stack.front->data);
+		}
+	}
+}

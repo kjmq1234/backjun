@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -11,11 +10,11 @@ int	compare(const void* a, const void* b)
 	return (0);
 }
 
-int	valid(int current, int* buf, int i)
+int	valid(int current, int* buf, int i, int k)
 {
 	for (int n = 0; n < current; n++)
 	{
-		if (buf[n] == i)
+		if (i == k)
 			return (0);
 	}
 	return (1);
@@ -35,7 +34,7 @@ void	recursive(int count, int depth, int current, int* buf, int* soo)
 	{
 		for (int i = 0; i < count; i++)
 		{
-			if (valid(current, buf, soo[i]))
+			if (valid(current, buf, soo[i], soo[i - 1]) || i == 0)
 			{
 				buf[current] = soo[i];
 				recursive(count, depth, current + 1, buf, soo);
@@ -48,15 +47,27 @@ int	main(void)
 {
 	int	count;
 	int	depth;
+	int idx = 0;
 	int	buf[7];
 	int* soo;
+	int* real;
 
 	scanf("%d %d", &count, &depth);
 	soo = (int*)malloc(sizeof(int) * count);
+	real = (int*)malloc(sizeof(int) * count);
+	for (int i = 0; i < count; i++)
+		scanf("%d", &soo[i]);
+	qsort(soo, count, sizeof(int), compare);
 	for (int i = 0; i < count; i++)
 	{
-		scanf("%d", &soo[i]);
+		if (soo[i] != soo[i - 1])
+		{
+			real[idx++] = soo[i];
+		}
 	}
-	qsort(soo, count, sizeof(int), compare);
-	recursive(count, depth, 0, buf, soo);
+	for (int i = 0; i < idx; i++)
+	{
+		buf[0] = real[i];
+		recursive(count, depth, 1, buf, soo);
+	}
 }

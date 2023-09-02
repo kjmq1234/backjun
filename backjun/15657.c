@@ -15,7 +15,7 @@ int	valid(int current, int* buf, int i)
 {
 	for (int n = 0; n < current; n++)
 	{
-		if (buf[n] == i)
+		if (buf[n] > i)
 			return (0);
 	}
 	return (1);

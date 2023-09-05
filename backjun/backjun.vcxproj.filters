@@ -207,7 +207,7 @@
     <ClCompile Include="1620.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="compare_binarysearch.c">
+    <ClCompile Include="compare.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="binarysearch.c">
@@ -322,6 +322,21 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="10799.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="17298.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="24060.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="11728.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="10825.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1920.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

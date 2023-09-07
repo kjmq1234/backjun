@@ -20,7 +20,6 @@ int	binarysearch_lower(int* arr, int size, int key)
 	return (low);
 }
 
-
 int	binarysearch_upper(int* arr, int size, int key)
 {
 	int	low = 0;
